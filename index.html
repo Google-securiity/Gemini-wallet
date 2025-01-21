@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bitcoin Wallet Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #1e1e2e;im us
+            color: #fff;
+        }
+        .dashboard {
+            display: flex;
+        }
+        .sidebar {
+            width: 250px;
+            background: #282846;
+            padding: 20px;
+        }
+        .sidebar h2 {
+            color: #f4a261;
+        }
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+        .sidebar ul li {
+            padding: 10px 0;
+        }
+        .content {
+            flex-grow: 1;
+            padding: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid #f4a261;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background: #f4a261;
+            color: #282846;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard">
+        <aside class="sidebar">
+            <h2>Dashboard</h2>
+            <ul>
+                <li>Overview</li>
+                <li>Wallets</li>
+                <li>Transactions</li>
+                <li>Settings</li>
+            </ul>
+        </aside>
+        <main class="content">
+            <header>
+                <h1>Total Balance: <span id="total-balance">300,000 BTC</span></h1>
+            </header>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Wallet Name</th>
+                        <th>Address</th>
+                        <th>Balance</th>
+                        <th>Percentage</th>
+                        <th>Last Transaction</th>
+                    </tr>
+                </thead>
+                <tbody id="wallet-data">
+                    <!-- Wallet data will be injected here by JS -->
+                </tbody>
+            </table>
+        </main>
+    </div>
+    <script>
+        const wallets = [
+            { name: "Bitfinex-coldwallet", address: "bc1qgdjqv0av3q56jvd82tkdjpy7gdp9ut8tlqmgrpmv24sq90ecnvqqjwvw97", balance: "156,010 BTC", percentage: "0.7874%", lastTransaction: "2025-01-11 05:11:56" },
+            { name: "Binance-hotwallet", address: "bc1qxyz123example456abc789", balance: "100,000 BTC", percentage: "0.5050%", lastTransaction: "2025-01-10 12:30:45" },
+            { name: "Kraken-coldwallet", address: "bc1qwxyz789example123def456", balance: "50,000 BTC", percentage: "0.2525%", lastTransaction: "2025-01-09 08:45:33" }
+        ];
+
+        const walletTable = document.getElementById('wallet-data');
+
+        wallets.forEach(wallet => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${wallet.name}</td>
+                <td>${wallet.address}</td>
+                <td>${wallet.balance}</td>
+                <td>${wallet.percentage}</td>
+                <td>${wallet.lastTransaction}</td>
+            `;
+            walletTable.appendChild(row);
+        });
+    </script>
+</body>
+</html>
